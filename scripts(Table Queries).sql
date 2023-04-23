@@ -1,4 +1,6 @@
-CREATE TABLE BloodBank.Hospital (
+/* Tables of Blood Bank database */ 
+
+CREATE TABLE Hospital (
     HospitalID INT PRIMARY KEY NOT NULL,
     HospitalName VARCHAR(50),
     HospitalLocation VARCHAR(50),
@@ -9,16 +11,16 @@ CREATE TABLE BloodBank.Hospital (
     FOREIGN KEY (BloodBankID) REFERENCES BloodBank(BloodBankID)
 );
 
-CREATE TABLE BloodBank.BloodInventory(
+CREATE TABLE BloodInventory(
     BloodBankID INT,
     BloodType VARCHAR(50),
-    bloodQuantity INT,
+    BloodQuantity INT,
     HospitalID INT,
     FOREIGN KEY (BloodBankID) REFERENCES BloodBank(BloodBankID),
     FOREIGN KEY (HospitalID) REFERENCES Hospital(HospitalID)
 );
 
-CREATE TABLE BloodBank.BloodRequest(
+CREATE TABLE BloodRequest(
     BloodRequestID INT PRIMARY KEY NOT NULL,
     BloodType VARCHAR(50),
     Quantity INT,
@@ -27,7 +29,7 @@ CREATE TABLE BloodBank.BloodRequest(
     FOREIGN KEY (HospitalID) REFERENCES Hospital(HospitalID)
 );
 
-CREATE TABLE BloodBank.BloodDonor(
+CREATE TABLE BloodDonor(
     BloodDonorID INT PRIMARY KEY NOT NULL,
     DonorName VARCHAR(50),
     DonorBloodType VARCHAR(50),
@@ -36,7 +38,7 @@ CREATE TABLE BloodBank.BloodDonor(
     FOREIGN KEY (BloodBankID) REFERENCES BloodBank(BloodBankID)
 );
 
-CREATE TABLE BloodBank.BloodBank(
+CREATE TABLE BloodBank(
     BloodBankID INT PRIMARY KEY NOT NULL,
     BloodBankName VARCHAR(50),
     BloodBankLocation VARCHAR(50),
@@ -44,14 +46,18 @@ CREATE TABLE BloodBank.BloodBank(
     EmailAddress VARCHAR(50)
 );
 
+/* Tables of Blood Bank database */ 
 
-INSERT INTO BloodBank.Hospital (HospitalID, HospitalName, HospitalLocation, ContactPerson, PhoneNumber, EmailAddress, BloodBankID)
+
+/* Populate Tables of Blood bank database */
+
+INSERT INTO Hospital (HospitalID, HospitalName, HospitalLocation, ContactPerson, PhoneNumber, EmailAddress, BloodBankID)
 VALUES
 (1, 'Paray Hospital', 'Thaba-Tseka', 55541234, 'info@stmaryhospital.com', 1),
 (2, 'Maluti Hospital', 'Berea', 55516678, 'info@mountsinaihospital.com', 2),
 (3, 'Mafeteng Hospital', 'Mafeteng', 55542468, 'info@hopkinshospital.com', 3);
 
-INSERT INTO BloodBank.BloodInventory (BloodBankID, BloodType, bloodQuantity, HospitalID)
+INSERT INTO BloodInventory (BloodBankID, BloodType, bloodQuantity, HospitalID)
 VALUES
 (1, 'A', 100, 1),
 (2, 'B', 50, 2),
@@ -60,24 +66,25 @@ VALUES
 (2, 'A', 10, 2),
 (3, 'O', 30, 3);
 
-INSERT INTO BloodBank.BloodRequest (BloodRequestID, BloodType, Quantity, RequestStatus, HospitalID)
+INSERT INTO BloodRequest (BloodRequestID, BloodType, Quantity, RequestStatus, HospitalID)
 VALUES
 (1, 'A', 5, 'Pending', 1),
 (2, 'B', 3, 'Fulfilled', 2),
 (3, 'AB', 2, 'Pending', 3);
 
-INSERT INTO BloodBank.BloodDonor (BloodDonorID, DonorName, DonorBloodType, DonorContactDetails, BloodBankID)
+INSERT INTO BloodDonor (BloodDonorID, DonorName, DonorBloodType, DonorContactDetails, BloodBankID)
 VALUES
 (1, 'Makula Anna', 'A', 55531111, 1),
 (2, 'Jane Leru', 'B', 55572222, 2),
 (3, 'Lerato Johnson', 'O', 55593333, 3);
 
-INSERT INTO BloodBank.BloodBank (BloodBankID, BloodBankName, BloodBankLocation, BloodBankPhoneNumber, EmailAddress)
+INSERT INTO BloodBank (BloodBankID, BloodBankName, BloodBankLocation, BloodBankPhoneNumber, EmailAddress)
 VALUES
 (1, 'Maseru Blood Bank', 'Maseru', '58558888', 'info@nybloodcenter.com'),
 (2, 'Maseru Blood Bank', 'Maseru', '58558888', 'info@redcrossblood.org'),
-(3, 'Maseru Blood Bank', 'Maseru', '58558888', 'info@hopkinsbloodcenter.org')
+(3, 'Maseru Blood Bank', 'Maseru', '58558888', 'info@hopkinsbloodcenter.org');
 
+/* Populate Tables of Blood bank database */ 
 
 
 /* Tables of paray database */ 
